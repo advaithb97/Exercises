@@ -1,1 +1,5 @@
-
+string_val = input('Enter string: ')
+upper_data = string_val.upper()
+lower_data = string_val.lower()
+print(upper_data)
+print(lower_data)
