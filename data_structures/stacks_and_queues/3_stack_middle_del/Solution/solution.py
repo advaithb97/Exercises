@@ -21,23 +21,17 @@ class Stack:
 	def size(self): 
 		return len(self.items) 
 		
-def deletemid(st, n, curr) : 
-
-	# If stack is empty or all items 
-	# are traversed 
-	if (st.isEmpty() or curr == n) : 
-		return
-	
-	# Remove current item 
-	x = st.peek() 
-	st.pop() 
-	
-	# Remove other items 
-	deletemid(st, n, curr+1) 
-	
-	# Put all items back except middle 
-	if (curr != int(n/2)) : 
-		st.push(x) 
+def deletemid(st) : 
+	vals = []
+	while not st.isEmpty():
+		vals.append(st.pop())
+	vals = sorted(vals)
+	midval = vals[len(vals)//2]
+	idx = vals.index(midval)
+	for i in range(idx):
+		st.push(vals[i])
+	for i in range(idx+1, len(vals)):
+		st.push(vals[i])
 
 if __name__ == '__main__': 
     st = Stack() 
@@ -51,7 +45,7 @@ if __name__ == '__main__':
     st.push('6') 
     st.push('7') 
 
-    deletemid(st, st.size(), 0) 
+    deletemid(st) 
 
 # Printing stack after deletion 
 # of middle. 
