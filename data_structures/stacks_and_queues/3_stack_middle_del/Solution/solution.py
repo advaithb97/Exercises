@@ -22,16 +22,16 @@ class Stack:
 		return len(self.items) 
 		
 def deletemid(st) : 
-	vals = []
-	while not st.isEmpty():
-		vals.append(st.pop())
-	vals = sorted(vals)
-	midval = vals[len(vals)//2]
-	idx = vals.index(midval)
-	for i in range(idx):
-		st.push(vals[i])
-	for i in range(idx+1, len(vals)):
-		st.push(vals[i])
+	s2 = Stack()
+	mididx = st.size()//2
+	length = st.size()
+	for i in range(mididx):
+		s2.push(st.pop())
+	st.pop()
+	for i in range(mididx+1, length):
+		s2.push(st.pop())
+	while not s2.isEmpty():
+		st.push(s2.pop())
 
 if __name__ == '__main__': 
     st = Stack() 
